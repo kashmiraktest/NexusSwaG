@@ -16,6 +16,7 @@ import java.util.List;
 public class LetsWriteTest {
  WebDriver driver;
  WebDriverWait wait;
+
    String URL ="https://www.saucedemo.com/";
 
     @Before
@@ -47,5 +48,15 @@ public class LetsWriteTest {
     public void addItemsToCartVerify() {
 
     }
+ 
+      @Test
+    /*
+open a new window and complete shopping flow, (select +buy +verify +pay )
+ https://demo.midtrans.com/
+    * */
+    public void addItemsToCartVerify() {
+
+    }
+
     
 }
