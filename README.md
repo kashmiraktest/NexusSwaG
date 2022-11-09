@@ -3,6 +3,6 @@ A minimalistic framework for java selenium test
 
 Pull the project 
 
-Verify the chrome version if its above 86.0 then use appropriate chrome driver 
+Verify the appropriate chrome driver version
 
 If required replace chromeDriver provided in /Browser folder 
