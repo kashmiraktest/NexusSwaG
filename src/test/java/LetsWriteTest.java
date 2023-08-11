@@ -28,19 +28,9 @@ public class LetsWriteTest {
 
     }
 
-    @Test
-     /* login, sort and verify
-        login with --> standard_user
-        wait for page to load or any element then assert and verify that user successfully logged in
-        sort the list
-        verify the list is sorted correctly
-    * */
-    public void verifyIsLoginSuccessful() {
-
-   }
-
-    @Test
+     @Test
     /*
+    Login with problem_user, password : secret_sauce
     Add items to cart and if any items fails to get added in cart print the name
     as an example we have 6 items in inventory,
     then only 2 items fails to get added in cart then print the name of those 2 items
@@ -49,14 +39,18 @@ public class LetsWriteTest {
 
     }
  
-      @Test
-    /*
-open a new window and complete shopping flow, (select +buy +verify +pay )
- https://demo.midtrans.com/
+    @Test
+     /* Login with --> standard_user,  password : secret_sauce
+        Verify that user successfully logged in
+        sort the list - choose any option in DropDown.
+        verify the list is sorted correctly
     * */
-    public void addItemsToCartVerify() {
+    public void verifyIsLoginSuccessful() {
 
-    }
+   }
+
+
+
 
     
 }
