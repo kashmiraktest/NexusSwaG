@@ -20,15 +20,15 @@ public class LetsWriteTest {
 
 	public void login(String UserName, String Password) throws InterruptedException {
 		
-    WebElement User_name = driver.findElement(By.xpath("//input[@id='user-name']"));
+                  WebElement User_name = driver.findElement(By.xpath("//input[@id='user-name']"));
 		  User_name.sendKeys(UserName);
 		  Thread.sleep(1000);
 		  
-    WebElement Pass_word = driver.findElement(By.xpath("//input[@id='password']"));
+                  WebElement Pass_word = driver.findElement(By.xpath("//input[@id='password']"));
 		  Pass_word.sendKeys(Password);
 		  Thread.sleep(1000);
 		  
-    WebElement Login_btn = driver.findElement(By.xpath("//input[@id='login-button']"));
+                  WebElement Login_btn = driver.findElement(By.xpath("//input[@id='login-button']"));
 		  Login_btn.click();
 	}
 	
@@ -37,7 +37,7 @@ public class LetsWriteTest {
 		  OpenMenu.click();
 		  Thread.sleep(1000);
 		
-    WebElement Logout = driver.findElement(By.xpath("//*[text()='Logout']"));
+                  WebElement Logout = driver.findElement(By.xpath("//*[text()='Logout']"));
 		  Logout.click();
 		  Thread.sleep(1000);
 	}
@@ -88,7 +88,7 @@ public class LetsWriteTest {
 	 * name of those 2 items
 	 */
 	@Test(priority = 1)
-	public void verifyIsLoginSuccessful() throws InterruptedException
+	public void addItemsToCartVerify() throws InterruptedException
 	{
 		  //Login with problem_user
 		  login("problem_user", "secret_sauce");
@@ -107,7 +107,7 @@ public class LetsWriteTest {
 			   } catch (Exception e) {
 				    System.out.println("Item not added in cart and item name is " + AddedItems.get(index));
 			  }
-		}
+		  }
 		
 		  //Return to home page
 		  driver.findElement(By.xpath("//button[@id='continue-shopping']")).click();
@@ -126,7 +126,7 @@ public class LetsWriteTest {
 	 * the list is sorted correctly
 	 */
 	@Test(priority = 2)
-	public void addItemsToCartVerify() throws InterruptedException
+	public void verifyIsLoginSuccessfulAndTestSorting() throws InterruptedException
 	{
 		  //Login with standard_user
 		  login("standard_user", "secret_sauce");
@@ -139,35 +139,35 @@ public class LetsWriteTest {
     	
 		  //Sort by using drop down
 		  Select drpdown = new Select(driver.findElement(By.xpath("//select[contains(@class,'product_sort_container')]")));
-    drpdown.selectByVisibleText("Price (low to high)");
+                  drpdown.selectByVisibleText("Price (low to high)");
     	 
-    //Get all inventory prices in the order on page and verify if they are in order
-    List<WebElement> ItemPrices = driver.findElements(By.className("inventory_item_price"));
+                  //Get all inventory prices in the order on page and verify if they are in order
+                  List<WebElement> ItemPrices = driver.findElements(By.className("inventory_item_price"));
     	 
-    double PreviousPrice = 0.0;
-    for (int i = 0; i < ItemPrices.size(); i++) {
-    		 String ItemPriceText = ItemPrices.get(i).getText();
+                  double PreviousPrice = 0.0;
+                  for (int i = 0; i < ItemPrices.size(); i++) {
+    		     String ItemPriceText = ItemPrices.get(i).getText();
     		 
-    		 double Value = 0.0;
-    		 try{
+    		     double Value = 0.0;
+    		     try{
     			//substring 1 to remove $ and convert to floating number for comparison
       			 Value = Double.valueOf(ItemPriceText.substring(1)); 
-    		 }
-    		 catch(Exception e) {
-    		  System.out.println("Price in incorrect format!");
+    		     }
+    		         catch(Exception e) {
+    		         System.out.println("Price in incorrect format!");
     			 throw e;
-    		 }
+    		     }
     		 
-    		 //Compare with previous price in sequence if it is greater or equal
-    		 if(PreviousPrice > Value) {
+    		     //Compare with previous price in sequence if it is greater or equal
+    		     if(PreviousPrice > Value) {
     			  System.out.println("Items were not sorted properly");
-    		 }
-        Assert.assertTrue( PreviousPrice <= Value);
+    		     }
+                 Assert.assertTrue( PreviousPrice <= Value);
         	 
-        //Assign current price to previous price to compare with next item
-        PreviousPrice = Value;
-    		}
-    	 Thread.sleep(1000);
- 		logout();
-   }  
+                //Assign current price to previous price to compare with next item
+                PreviousPrice = Value;
+    	    }
+    	    Thread.sleep(1000);
+ 	    logout();
+       }  
 }
